@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        .base tr,
+        .base th,
+        .base td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Items list</h1>
+
+<table class="base">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>SubCategory</th>
+    </tr>
+    <tr th:each="item:${items}">
+        <td th:text="${item.id}">123</td>
+        <td th:text="${item.name}">Jhon</td>
+        <td th:text="${item.code}">Doe</td>
+
+        <td>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Category</th>
+                </tr>
+                <tr th:each="subCategory:${item.subCategory}">
+
+                    <td th:text="${subCategory.id}">123</td>
+                    <td th:text="${subCategory.name}">Jhon</td>
+                    <td th:text="${subCategory.code}">Jhon</td>
+
+
+                    <td>
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Code</th>
+                            </tr>
+                            <tr th:each="category:${subCategory.category}">
+                                <td th:text="${category.id}">123</td>
+                                <td th:text="${category.name}">Jhon</td>
+                                <td th:text="${category.code}">Jhon</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
